@@ -66,7 +66,7 @@
         '<button type="button" data-acc="' + (p.est === "oculto" ? "publicar" : "ocultar") + '" data-id="' + p.id + '"' + (p.est === "reservado" ? " disabled" : "") + '>' + (p.est === "oculto" ? "Publicar" : "Ocultar") + '</button>' +
         '<button type="button" class="fuerte" data-acc="vender" data-id="' + p.id + '">Marcar vendida</button>';
       return '<li class="fila-producto">' +
-        '<span class="mini" style="background:' + FONDOS[p.fondo] + '"><img src="img/' + p.imagen + '-640.webp" alt=""></span>' +
+        '<span class="mini" style="background:' + FONDOS[p.fondo] + '"><img src="../public/img/' + p.imagen + '-640.webp" alt=""></span>' +
         '<div class="info"><span class="codigo">' + codigo(p) + '</span><h3>' + esc(p.nombre) + '</h3><span class="sub">' + T[p.tecnica].corto + ' · ' + p.tipo + ' · ' + precio(p.precio) + '</span></div>' +
         '<span class="estado e-' + p.est + '">' + NOMBRE_PROD[p.est] + (p.est === "reservado" ? " · " + p.reservaMin + " min" : "") + '</span>' +
         '<div class="acc">' + acciones + '</div></li>';

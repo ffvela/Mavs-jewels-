@@ -1,0 +1,19 @@
+# Todas las rutas que no son archivos reales pasan por index.php (controlador frontal)
+Options -Indexes
+RewriteEngine On
+
+# Forzar HTTPS en el hosting
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?r=$1 [QSA,L]
+
+# Las fotos subidas nunca se ejecutan como código
+<FilesMatch "\.(php|phtml|phar)$">
+    <If "%{REQUEST_URI} =~ m#^/uploads/#">
+        Require all denied
+    </If>
+</FilesMatch>
