@@ -639,3 +639,65 @@ input[type="radio"], input[type="checkbox"] { width: 20px; height: 20px; accent-
 .aviso.ok { background: var(--t-ciruela); color: var(--noche); }
 .aviso[hidden] { display: none; }
 .casilla label { display: grid; grid-template-columns: 20px 1fr; gap: 10px; }
+
+/* Legibilidad del texto sobre las fotos de portada */
+.hero-full::before {
+  background:
+    linear-gradient(90deg, rgba(65,33,68,.9) 0%, rgba(65,33,68,.78) 35%, rgba(65,33,68,.35) 62%, rgba(65,33,68,0) 80%),
+    linear-gradient(180deg, rgba(65,33,68,0) 45%, rgba(65,33,68,.75) 100%);
+}
+.hero-full .bajada { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.55); }
+.hero-full .rotulo { color: #f8d7e7; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+.hero-full .migas { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+.hero-full .btn-linea { background: rgba(65,33,68,.6); }
+.hero-full .btn-linea:hover { background: #fff; }
+@media (max-width: 760px) {
+  .hero-full::before {
+    background:
+      linear-gradient(180deg, rgba(65,33,68,.35) 0%, rgba(65,33,68,.6) 40%, rgba(65,33,68,.88) 100%);
+  }
+}
+.hero-full > img { z-index: 0; }
+.hero-full::before { z-index: 1; }
+.hero-full .contenedor { z-index: 2; }
+
+/* ==========================================================================
+   Página Piedras
+   ========================================================================== */
+.gema-css { display: inline-block; width: 40px; height: 40px; border-radius: 50%; flex: none; box-shadow: inset 0 -4px 10px rgba(0,0,0,.25), 0 6px 12px -6px rgba(65,33,68,.5); }
+.gema-css.mini { width: 44px; height: 44px; }
+.gema-css.grande { width: 72px; height: 72px; }
+
+.guia { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.situacion { background: #fff; padding: 22px 22px 20px; display: grid; gap: 14px; align-content: start; border-top: 4px solid var(--t-rosa-oscuro); }
+.situacion:nth-child(5n+2) { border-top-color: var(--t-ciruela); }
+.situacion:nth-child(5n+3) { border-top-color: var(--t-oro); }
+.situacion:nth-child(5n+4) { border-top-color: var(--t-noche); }
+.situacion:nth-child(5n+5) { border-top-color: var(--rosa); }
+.situacion h3 { font-size: 1.75rem; margin: 0; }
+.trio { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.trio li { display: flex; align-items: center; gap: 12px; font-size: .88rem; }
+.trio .gema-css { width: 30px; height: 30px; }
+.situacion .enlace-flecha { justify-self: start; font-size: .95rem; color: var(--noche); }
+
+.combinaciones { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,.2); counter-reset: combo; }
+.combinaciones li { padding: 26px 20px 8px 0; display: grid; gap: 8px; align-content: start; counter-increment: combo; }
+.combinaciones li + li { padding-left: 20px; border-left: 1px solid rgba(255,255,255,.2); }
+.combinaciones .gemas { display: flex; gap: 0; margin-bottom: 6px; }
+.combinaciones .gemas .gema-css { width: 46px; height: 46px; margin-right: -10px; border: 2px solid var(--noche); }
+.combinaciones h3 { font-size: 2rem; color: #fff; margin: 4px 0 0; }
+.combinaciones h3::before { content: counter(combo) ". "; color: var(--rosa); }
+.combinaciones .piedras-combo { font-family: var(--display); text-transform: uppercase; color: var(--rosa); font-size: .95rem; margin: 0; }
+.combinaciones p { font-size: .86rem; margin: 0; }
+@media (max-width: 1000px) {
+  .combinaciones { grid-template-columns: 1fr 1fr; }
+  .combinaciones li, .combinaciones li + li { padding-left: 0; border-left: 0; border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 20px; }
+  .combinaciones li:nth-child(even) { padding-left: 20px; }
+}
+@media (max-width: 560px) { .combinaciones { grid-template-columns: 1fr; } .combinaciones li:nth-child(even) { padding-left: 0; } }
+
+.minerales { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0 48px; border-top: 1px solid var(--noche); }
+.mineral { display: grid; grid-template-columns: 72px 1fr; gap: 18px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--linea); scroll-margin-top: 90px; }
+.mineral h3 { font-size: 1.8rem; margin: 0 0 2px; }
+.mineral p { font-size: .88rem; color: var(--gris); margin: 0; }
+.significados > div { grid-template-columns: 44px 1fr; }
