@@ -24,7 +24,7 @@
   window.MAVS_ICONOS = I;
 
   function precio(n) { return "$" + Number(n).toLocaleString("es-CL"); }
-  function img(nombre, tam) { return "img/" + nombre + "-" + (tam || 640) + ".webp"; }
+  function img(nombre, tam) { return "../public/img/" + nombre + "-" + (tam || 640) + ".webp"; }
   function wspLink(texto) { return "https://wa.me/" + WSP + "?text=" + encodeURIComponent(texto); }
   function porId(id) { for (var i = 0; i < P.length; i++) if (P[i].id === id) return P[i]; return null; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
@@ -53,7 +53,7 @@
       '<header class="cabecera"><div class="contenedor">' +
         '<button class="icono-btn menu-btn" type="button" id="abrir-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-principal">' + I.menu + '</button>' +
         '<nav class="nav" id="nav-principal" aria-label="Navegación principal">' + nav + '</nav>' +
-        '<a class="marca" href="index.html" aria-label="Mavs Jewelry, inicio"><img src="img/logo-mavs-negro.png" alt="Mavs Jewelry" width="68" height="50"></a>' +
+        '<a class="marca" href="index.html" aria-label="Mavs Jewelry, inicio"><img src="../public/img/logo-mavs-negro.png" alt="Mavs Jewelry" width="68" height="50"></a>' +
         '<div class="cab-acciones">' +
           '<a class="icono-btn" href="https://www.instagram.com/mavs_jewelry/" target="_blank" rel="noopener" aria-label="Instagram">' + I.ig + '</a>' +
           '<a class="icono-btn" href="contacto.html" aria-label="Contacto">' + I.mail + '</a>' +
@@ -66,7 +66,7 @@
     return '' +
       '<footer class="pie-sitio"><div class="contenedor">' +
         '<div class="columnas">' +
-          '<div><img class="logo-pie" src="img/logo-mavs.png" alt="Mavs Jewelry" width="100" height="74">' +
+          '<div><img class="logo-pie" src="../public/img/logo-mavs.png" alt="Mavs Jewelry" width="100" height="74">' +
             '<p>Joyería artesanal hecha a mano en Santiago por María Angélica Venegas. Plata, piedras naturales, mostacilla Miyuki y alambrismo.</p></div>' +
           '<div><h4>Tienda</h4><ul>' +
             '<li><a href="catalogo.html#plata">Plata con piedras</a></li>' +
@@ -213,7 +213,7 @@
   if (dest) {
     var orden = P.filter(function (p) { return p.destacado && p.estado !== "vendida"; }).concat(P.filter(function (p) { return !p.destacado && p.estado !== "vendida"; }));
     dest.innerHTML = '' +
-      '<article class="editorial"><img src="img/feria-pulseras-640.webp" alt="Pulseras tejidas en la feria" loading="lazy">' +
+      '<article class="editorial"><img src="../public/img/feria-pulseras-640.webp" alt="Pulseras tejidas en la feria" loading="lazy">' +
         '<div class="cuerpo"><h3>Hecho a mano</h3>' +
         '<p>Ninguna pieza de Mavs Jewelry se compra terminada para revenderla. Cada aro, collar y pulsera se diseña y se teje en el taller de María Angélica.</p>' +
         '<p>Las piezas de plata con piedra son únicas: cuando se venden, no vuelven.</p>' +
