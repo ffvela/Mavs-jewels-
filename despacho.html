@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Datos de despacho · Mavs Jewelry</title>
+  <meta name="description" content="Datos de despacho y pago con tarjeta.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mavs.css">
+</head>
+<body data-pagina="despacho">
+  <div id="cabecera"></div>
+
+  <main>
+    <section class="banda banda-blanca ficha-banda">
+      <div class="contenedor">
+        <nav class="migas oscuras" aria-label="Ruta"><a href="index.html">Inicio</a> › <a href="carrito.html">Carrito</a> › Datos de despacho</nav>
+        <h1 class="titulo-pagina">Datos de despacho</h1>
+        <ol class="pasos-compra" aria-label="Pasos de la compra">
+          <li>Carrito</li><li aria-current="step">Datos de despacho</li><li>Pago en Mercado Pago</li>
+        </ol>
+        <div class="despacho-grid">
+          <form id="form-despacho" class="tarjeta" novalidate>
+            <input type="hidden" name="csrf" value="token-de-sesion">
+            <h2>¿A quién se lo enviamos?</h2>
+            <div class="campos-2">
+              <div class="campo"><label for="nombre">Nombre completo</label><input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="120" required aria-describedby="err-nombre"><span class="error" id="err-nombre"></span></div>
+              <div class="campo"><label for="rut">RUT</label><input id="rut" name="rut" type="text" inputmode="text" placeholder="12.345.678-9" maxlength="12" required aria-describedby="err-rut"><span class="error" id="err-rut"></span></div>
+              <div class="campo"><label for="correo">Correo</label><input id="correo" name="correo" type="email" autocomplete="email" maxlength="150" required aria-describedby="err-correo"><span class="error" id="err-correo"></span></div>
+              <div class="campo"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+56 9 1234 5678" maxlength="15" required aria-describedby="err-telefono"><span class="error" id="err-telefono"></span></div>
+            </div>
+            <h2>Dirección de despacho</h2>
+            <div class="campo"><label for="direccion">Calle y número</label><input id="direccion" name="direccion" type="text" autocomplete="street-address" maxlength="200" required aria-describedby="err-direccion"><span class="error" id="err-direccion"></span></div>
+            <div class="campos-2">
+              <div class="campo"><label for="comuna">Comuna</label><input id="comuna" name="comuna" type="text" maxlength="60" required aria-describedby="err-comuna"><span class="error" id="err-comuna"></span></div>
+              <div class="campo"><label for="region">Región</label><select id="region" name="region" required aria-describedby="err-region"></select><span class="error" id="err-region"></span></div>
+            </div>
+            <div class="estimado" aria-live="polite">
+              <div><span>Costo estimado Starken</span><strong id="est-costo">Elige tu región</strong></div>
+              <div><span>Plazo estimado</span><strong id="est-plazo">—</strong></div>
+              <p>El despacho es por pagar: lo pagas a Starken al recibir. Puedes calcular el valor exacto en el <a href="https://www.starken.cl/" target="_blank" rel="noopener">cotizador de Starken</a>.</p>
+            </div>
+            <fieldset class="opciones-radio">
+              <legend>¿Nos conocías de ferias?</legend>
+              <label><input type="radio" name="ferias" value="Sí"> Sí</label>
+              <label><input type="radio" name="ferias" value="No"> No</label>
+              <span class="error" id="err-ferias"></span>
+            </fieldset>
+            <div class="casilla"><label><input type="checkbox" name="politicas"><span>Acepto las <a href="contacto.html#politicas" target="_blank">políticas de venta</a> (garantía legal de 6 meses, retracto de 10 días y despacho por pagar).</span></label><span class="error" id="err-politicas"></span></div>
+            <div class="casilla"><label><input type="checkbox" name="privacidad"><span>Acepto la <a href="contacto.html#privacidad" target="_blank">política de privacidad</a> y el uso de mis datos para esta compra.</span></label><span class="error" id="err-privacidad"></span></div>
+            <button class="btn btn-noche btn-ancho" type="submit" id="pagar">Pagar con tarjeta</button>
+            <p class="aviso" id="aviso-envio" hidden role="status"></p>
+          </form>
+          <aside class="resumen" aria-label="Tu pedido">
+            <h2>Tu pedido</h2>
+            <ul class="resumen-items" id="resumen-items"></ul>
+            <div class="total"><span>Total a pagar hoy</span><div class="precio" id="total-despacho">$0</div></div>
+            <small>Despacho Starken por pagar al recibir. Al pagar, tus piezas quedan reservadas por 15 minutos.</small>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="pie"></div>
+  <script src="js/productos.js"></script>
+  <script src="js/mavs.js"></script>
+  <script src="js/paginas.js"></script>
+</body>
+</html>
