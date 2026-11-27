@@ -35,6 +35,7 @@
     ["index.html", "Inicio", "inicio"],
     ["catalogo.html", "Catálogo", "catalogo"],
     ["especialidad.html", "Personalizadas", "especialidad"],
+    ["piedras.html", "Piedras", "piedras"],
     ["nosotros.html", "Nosotros", "nosotros"],
     ["contacto.html", "Contacto", "contacto"]
   ];
@@ -70,7 +71,8 @@
           '<div><h4>Tienda</h4><ul>' +
             '<li><a href="catalogo.html#plata">Plata con piedras</a></li>' +
             '<li><a href="catalogo.html#miyuki">Miyuki y alambrismo</a></li>' +
-            '<li><a href="especialidad.html">Piezas personalizadas</a></li></ul></div>' +
+            '<li><a href="especialidad.html">Piezas personalizadas</a></li>' +
+            '<li><a href="piedras.html">Significado de las piedras</a></li></ul></div>' +
           '<div><h4>Compra segura</h4><ul>' +
             '<li><a href="contacto.html#politicas">Garantía legal de 6 meses</a></li>' +
             '<li><a href="contacto.html#politicas">Envíos y pago con tarjeta</a></li>' +
