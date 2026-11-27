@@ -47,7 +47,7 @@
       '<div class="franja"><div class="contenedor">' +
         '<span>' + I.estrella + '100% hecho a mano</span>' +
         '<span>' + I.estrella + 'Envíos por Starken</span>' +
-        '<span>' + I.estrella + 'Tarjeta o transferencia</span>' +
+        '<span>' + I.estrella + 'Pago con tarjeta</span>' +
       '</div></div>' +
       '<header class="cabecera"><div class="contenedor">' +
         '<button class="icono-btn menu-btn" type="button" id="abrir-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-principal">' + I.menu + '</button>' +
@@ -70,12 +70,12 @@
           '<div><h4>Tienda</h4><ul>' +
             '<li><a href="catalogo.html#plata">Plata con piedras</a></li>' +
             '<li><a href="catalogo.html#miyuki">Miyuki y alambrismo</a></li>' +
-            '<li><a href="catalogo.html#economicas">Piezas desde $5.000</a></li>' +
             '<li><a href="especialidad.html">Piezas personalizadas</a></li></ul></div>' +
           '<div><h4>Compra segura</h4><ul>' +
-            '<li><a href="contacto.html#politicas">Garantía de un mes</a></li>' +
-            '<li><a href="contacto.html#politicas">Envíos y medios de pago</a></li>' +
-            '<li><a href="contacto.html#politicas">Derecho a retracto</a></li>' +
+            '<li><a href="contacto.html#politicas">Garantía legal de 6 meses</a></li>' +
+            '<li><a href="contacto.html#politicas">Envíos y pago con tarjeta</a></li>' +
+            '<li><a href="contacto.html#politicas">Retracto de 10 días</a></li>' +
+            '<li><a href="contacto.html#privacidad">Privacidad</a></li>' +
             '<li><a href="index.html#donde">Dónde encontrarnos</a></li></ul></div>' +
           '<div><h4>Conversemos</h4><ul>' +
             '<li><a href="https://wa.me/' + WSP + '" target="_blank" rel="noopener">WhatsApp +56 9 8923 4239</a></li>' +
@@ -84,36 +84,22 @@
             '<li><a href="https://www.facebook.com/profile.php?id=61570840502174" target="_blank" rel="noopener">Facebook Mavs Jewelry</a></li></ul></div>' +
         '</div>' +
         '<p class="firma" aria-hidden="true">Mavs <span>Jewelry</span></p>' +
-        '<div class="legal"><span>© 2026 Mavs Jewelry. Todas las piezas son diseñadas y elaboradas a mano.</span><span>Boleta electrónica en cada compra</span></div>' +
+        '<div class="legal"><span>Mavs Jewelry · María Angélica Venegas · RUT [por completar] · mavenegas.s.mv@gmail.com · Santiago, Región Metropolitana</span><span>Boleta electrónica en cada compra</span></div>' +
       '</div></footer>' +
       '<a class="wsp-flotante" href="' + wspLink("Hola María Angélica, vi tu página y quiero hacer una consulta.") + '" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">' + I.wsp + '<span>Escríbeme</span></a>';
   }
 
   function capas() {
     return '' +
-      '<div class="capa" id="ficha" hidden role="dialog" aria-modal="true" aria-labelledby="ficha-titulo">' +
-        '<article class="ficha"><button class="cerrar" type="button" data-cerrar-ficha aria-label="Cerrar ficha">×</button>' +
-          '<div class="ficha-foto"><img id="ficha-img" src="" alt=""></div>' +
-          '<div class="ficha-info">' +
-            '<span class="rotulo" id="ficha-tec"></span>' +
-            '<h2 id="ficha-titulo"></h2>' +
-            '<div class="precio" id="ficha-precio"></div>' +
-            '<p id="ficha-desc"></p>' +
-            '<dl><dt>Materiales</dt><dd id="ficha-mat"></dd><dt>Piedras</dt><dd id="ficha-pie"></dd><dt>Tipo</dt><dd id="ficha-tipo"></dd><dt>Estado</dt><dd id="ficha-estado"></dd></dl>' +
-            '<span class="hecho-mano">' + I.estrella + '100% hecha a mano por María Angélica</span>' +
-            '<div class="acciones"><button class="btn btn-noche" type="button" id="ficha-agregar">Agregar al carrito</button>' +
-            '<a class="btn btn-linea" id="ficha-wsp" href="#" target="_blank" rel="noopener">' + I.wsp + 'Consultar</a></div>' +
-          '</div></article>' +
-      '</div>' +
       '<div class="velo" id="velo" hidden></div>' +
       '<aside class="carrito" id="carrito" aria-label="Carrito de compra" aria-hidden="true">' +
         '<div class="carrito-cab"><h2>Tu carrito</h2><button class="cerrar" type="button" id="cerrar-carrito" aria-label="Cerrar carrito">×</button></div>' +
         '<ul class="carrito-items" id="carrito-items"></ul>' +
         '<div class="carrito-pie">' +
           '<div class="total"><span>Total</span><div class="precio" id="carrito-total">$0</div></div>' +
-          '<small>Despacho por Starken, por pagar al recibir. Paga con tarjeta de crédito, débito o transferencia.</small>' +
-          '<button class="btn btn-rosa" type="button" id="ir-a-pagar">Continuar compra</button>' +
-          '<p class="aviso-pago" id="aviso-pago" hidden>Prototipo de diseño: el formulario de compra y el pago se conectan en la etapa de desarrollo con PHP y MySQL.</p>' +
+          '<small>Despacho por Starken, por pagar al recibir. Pago con tarjeta de crédito o débito en Mercado Pago.</small>' +
+          '<a class="btn btn-noche" href="despacho.html" id="ir-a-pagar">Continuar con la compra</a>' +
+          '<a class="enlace-carrito" href="carrito.html">Ver carrito completo</a>' +
         '</div>' +
       '</aside>';
   }
@@ -132,7 +118,7 @@
   });
 
   /* ---------------- Tarjeta de producto ---------------- */
-  var COLORES = { noche: "#1c1c1c", ciruela: "#4a2c45", rosa: "#f4aed4", "rosa-oscuro": "#a8457a", oro: "#b8935a" };
+  var COLORES = { noche: "var(--t-noche)", ciruela: "var(--t-ciruela)", rosa: "var(--t-rosa)", "rosa-oscuro": "var(--t-rosa-oscuro)", oro: "var(--t-oro)" };
   function fondo(p) { return COLORES[p.fondo] || COLORES.noche; }
 
   function tarjeta(p) {
@@ -141,16 +127,22 @@
       : (p.unica ? '<span class="etiqueta">Pieza única</span>' : "");
     return '' +
       '<article class="producto' + (vendida ? " es-vendida" : "") + '">' +
-        '<button class="foto' + (p.fondo === "rosa" ? " claro" : "") + '" type="button" data-ficha="' + p.id + '" style="--fondo:' + fondo(p) + '" aria-label="Ver ficha de ' + esc(p.nombre) + '">' + etiqueta +
+        '<a class="foto" href="producto.html?id=' + p.id + '" style="--fondo:' + fondo(p) + '" aria-label="Ver ficha de ' + esc(p.nombre) + '">' + etiqueta +
           '<span class="marco"><img src="' + img(p.imagen) + '" alt="' + esc(p.nombre) + '" loading="lazy" width="640" height="800"></span>' +
           '<span><span class="nombre">' + esc(p.nombre) + '</span>' +
           '<span class="sub">' + T[p.tecnica].corto + ' · ' + esc(p.piedras !== "Sin piedras" ? p.piedras : p.materiales) + '</span></span>' +
-        '</button>' +
+        '</a>' +
         '<div class="pie"><span class="precio">' + precio(p.precio) + '</span>' +
           '<button class="agregar" type="button" data-agregar="' + p.id + '"' + (vendida ? " disabled" : "") + '>' + (vendida ? "Vendida" : "Agregar") + '</button></div>' +
       '</article>';
   }
   window.MAVS_TARJETA = tarjeta;
+  window.MAVS = {
+    precio: precio, img: img, wspLink: wspLink, porId: porId, esc: esc, fondo: fondo,
+    carrito: function () { return carrito.slice(); },
+    quitar: function (id) { carrito = carrito.filter(function (x) { return x !== id; }); guardar(); pintarCarrito(); },
+    agregar: function (id) { agregar(id); }
+  };
 
   /* ---------------- Carrito ---------------- */
   var carrito = [];
@@ -183,12 +175,12 @@
       b.textContent = esta ? "En carrito" : "Agregar";
     });
     var fb = document.getElementById("ficha-agregar");
-    if (fb && fb.dataset.id) {
+    if (fb) {
       var fp = porId(Number(fb.dataset.id));
       var dentro = carrito.indexOf(fp.id) > -1;
-      fb.disabled = fp.estado === "vendida";
-      fb.textContent = fp.estado === "vendida" ? "Pieza vendida" : (dentro ? "Ya está en tu carrito" : "Agregar al carrito");
+      fb.textContent = dentro ? "Ya está en tu carrito" : "Agregar al carrito";
     }
+    if (window.MAVS_PINTAR_PAGINA) window.MAVS_PINTAR_PAGINA();
   }
 
   function agregar(id) {
@@ -200,43 +192,16 @@
 
   var panel = document.getElementById("carrito"), velo = document.getElementById("velo");
   function abrirCarrito() { panel.classList.add("abierto"); panel.setAttribute("aria-hidden", "false"); velo.hidden = false; }
-  function cerrarCarrito() { panel.classList.remove("abierto"); panel.setAttribute("aria-hidden", "true"); velo.hidden = true; document.getElementById("aviso-pago").hidden = true; }
+  function cerrarCarrito() { panel.classList.remove("abierto"); panel.setAttribute("aria-hidden", "true"); velo.hidden = true; }
   document.getElementById("abrir-carrito").addEventListener("click", abrirCarrito);
   document.getElementById("cerrar-carrito").addEventListener("click", cerrarCarrito);
   velo.addEventListener("click", cerrarCarrito);
-  document.getElementById("ir-a-pagar").addEventListener("click", function () { document.getElementById("aviso-pago").hidden = false; });
 
-  /* ---------------- Ficha de producto ---------------- */
-  var capa = document.getElementById("ficha");
-  function abrirFicha(id) {
-    var p = porId(id); if (!p) return;
-    document.getElementById("ficha-img").src = img(p.imagen, 1200);
-    document.getElementById("ficha-img").alt = p.nombre;
-    document.getElementById("ficha-tec").innerHTML = T[p.tecnica].nombre;
-    document.getElementById("ficha-titulo").textContent = p.nombre;
-    document.getElementById("ficha-precio").textContent = precio(p.precio);
-    document.getElementById("ficha-desc").textContent = p.descripcion;
-    document.getElementById("ficha-mat").textContent = p.materiales;
-    document.getElementById("ficha-pie").textContent = p.piedras;
-    document.getElementById("ficha-tipo").textContent = p.tipo + (p.unica ? " · pieza única" : "");
-    document.getElementById("ficha-estado").textContent = p.estado === "vendida" ? "Vendida" : "Disponible";
-    document.getElementById("ficha-wsp").href = wspLink("Hola, vi la pieza “" + p.nombre + "” (" + precio(p.precio) + ") en la página de Mavs Jewelry y quiero consultar por ella.");
-    document.getElementById("ficha-agregar").dataset.id = p.id;
-    capa.querySelector(".ficha-foto").style.setProperty("--fondo-ficha", fondo(p));
-    capa.hidden = false;
-    pintarCarrito();
-    capa.querySelector(".cerrar").focus();
-  }
-  function cerrarFicha() { capa.hidden = true; }
-  capa.addEventListener("click", function (e) { if (e.target === capa || e.target.hasAttribute("data-cerrar-ficha")) cerrarFicha(); });
-  document.getElementById("ficha-agregar").addEventListener("click", function () { var id = Number(this.dataset.id); cerrarFicha(); agregar(id); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { cerrarFicha(); cerrarCarrito(); } });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") cerrarCarrito(); });
 
   document.addEventListener("click", function (e) {
     var a = e.target.closest("[data-agregar]");
     if (a) { agregar(Number(a.getAttribute("data-agregar"))); return; }
-    var f = e.target.closest("[data-ficha]");
-    if (f) { abrirFicha(Number(f.getAttribute("data-ficha"))); return; }
     var q = e.target.closest("[data-quitar]");
     if (q) { var id = Number(q.getAttribute("data-quitar")); carrito = carrito.filter(function (x) { return x !== id; }); guardar(); pintarCarrito(); }
   });
@@ -244,7 +209,7 @@
   /* ---------------- Inicio: piezas destacadas ---------------- */
   var dest = document.getElementById("destacados");
   if (dest) {
-    var orden = P.filter(function (p) { return p.destacado; }).concat(P.filter(function (p) { return !p.destacado && p.estado !== "vendida"; }));
+    var orden = P.filter(function (p) { return p.destacado && p.estado !== "vendida"; }).concat(P.filter(function (p) { return !p.destacado && p.estado !== "vendida"; }));
     dest.innerHTML = '' +
       '<article class="editorial"><img src="img/feria-pulseras-640.webp" alt="Pulseras tejidas en la feria" loading="lazy">' +
         '<div class="cuerpo"><h3>Hecho a mano</h3>' +
@@ -260,7 +225,7 @@
     var estado = { tecnica: "todas", tipo: "todos", rango: "todos", orden: "recomendado" };
     var RANGOS = {
       todos: ["Todos los precios", 0, Infinity],
-      economicas: ["Hasta $10.000", 0, 10000],
+      bajo: ["Hasta $10.000", 0, 10000],
       medio: ["$10.001 a $18.000", 10001, 18000],
       alto: ["Más de $18.000", 18001, Infinity]
     };
@@ -268,7 +233,6 @@
     function leerHash() {
       var h = location.hash.replace("#", "");
       if (h === "plata" || h === "miyuki") { estado.tecnica = h; estado.rango = "todos"; }
-      else if (h === "economicas") { estado.rango = "economicas"; estado.tecnica = "todas"; }
       else if (h === "") { estado.tecnica = "todas"; }
     }
 
@@ -281,7 +245,7 @@
     }
     function cuenta(campo, valor) {
       return P.filter(function (p) {
-        if (!pasa(p, campo)) return false;
+        if (p.estado === "vendida" || !pasa(p, campo)) return false;
         if (campo === "tecnica") return valor === "todas" || p.tecnica === valor;
         if (campo === "tipo") return valor === "todos" || p.tipo === valor;
         var r = RANGOS[valor]; return p.precio >= r[1] && p.precio <= r[2];
@@ -305,7 +269,7 @@
     }
 
     function pintarGrilla() {
-      var lista = P.filter(function (p) { return pasa(p); });
+      var lista = P.filter(function (p) { return p.estado !== "vendida" && pasa(p); });
       if (estado.orden === "menor") lista.sort(function (a, b) { return a.precio - b.precio; });
       else if (estado.orden === "mayor") lista.sort(function (a, b) { return b.precio - a.precio; });
       else lista.sort(function (a, b) { return (a.estado === "vendida") - (b.estado === "vendida") || (b.destacado ? 1 : 0) - (a.destacado ? 1 : 0); });
