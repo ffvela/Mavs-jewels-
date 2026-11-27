@@ -1,12 +1,19 @@
 # Credenciales y configuración local
 .env
 
-# Dependencias
+# Dependencias (se instalan con composer install)
 vendor/
 node_modules/
+
+# Fotos subidas desde el panel
+public/uploads/productos/*
+!public/uploads/productos/.gitkeep
 
 # Sistema operativo y editores
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
+
+# Respaldos diarios de la base de datos (cron/respaldo_bd.php)
+respaldos/

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo | Mavs Jewelry</title>
+  <meta name="description" content="Catálogo de joyas artesanales Mavs Jewelry: plata con piedras, mostacilla Miyuki y alambrismo. Todas las piezas con precio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mavs.css">
+</head>
+<body data-pagina="catalogo">
+  <div id="cabecera"></div>
+
+  <main>
+    <section class="hero-full medio">
+      <img src="../public/img/hero-azul.webp" alt="Aros de mostacilla azul y perla junto a un cuarzo rosado" width="2000" height="1653">
+      <div class="contenedor">
+        <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a> › Catálogo</nav>
+        <h1>Catálogo</h1>
+        <p class="bajada">Todas las piezas tienen precio. Cuando una pieza única se vende, deja de mostrarse.</p>
+      </div>
+    </section>
+
+    <div class="subbarra">
+      <div class="contenedor">
+        <div class="lista-tec filtros" id="f-tecnica" role="group" aria-label="Filtrar por técnica"></div>
+        <button class="btn btn-linea" type="button" id="ver-filtros" aria-expanded="false" aria-controls="panel-filtros">Filtrar</button>
+      </div>
+    </div>
+
+    <section class="banda banda-blanca" style="padding-top:44px">
+      <div class="contenedor">
+        <div class="barra-resultados">
+          <div>
+            <h2 class="titulo-grilla" id="titulo-resultados" style="margin:0">Todas las piezas</h2>
+            <span class="cuenta" id="cuenta-resultados"></span>
+          </div>
+          <label class="selector" for="orden">Ordenar
+            <select id="orden">
+              <option value="recomendado">Recomendado</option>
+              <option value="menor">Precio: menor a mayor</option>
+              <option value="mayor">Precio: mayor a menor</option>
+            </select>
+          </label>
+        </div>
+        <div class="grilla-productos" id="grilla-catalogo"></div>
+      </div>
+    </section>
+
+    <aside class="panel-filtros filtros" id="panel-filtros" aria-label="Filtros del catálogo">
+      <div class="cab"><h2>Filtrar</h2><button class="cerrar" type="button" id="cerrar-filtros" aria-label="Cerrar filtros" style="position:static">×</button></div>
+      <div class="filtro"><h4>Tipo de pieza</h4><div class="chips" id="f-tipo"></div></div>
+      <div class="filtro"><h4>Precio</h4><div class="chips" id="f-rango"></div></div>
+      <button class="limpiar" type="button" id="limpiar">Quitar filtros</button>
+      <button class="btn btn-noche" type="button" id="aplicar-filtros">Ver resultados</button>
+    </aside>
+
+    <section class="banda banda-ciruela">
+      <div class="contenedor llamado">
+        <span class="rotulo" style="color:var(--rosa)">¿No encuentras lo que buscas?</span>
+        <h2 class="titulo-grilla" style="margin-bottom:.2em">La creo <em>a tu medida</em></h2>
+        <p>Elige la piedra, el color y la forma. Entre 4 y 8 piedras por pieza, como en las pulseras de los siete chakras.</p>
+        <div class="acciones"><a class="btn btn-rosa" href="especialidad.html">Piezas personalizadas</a></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="pie"></div>
+  <script src="js/productos.js"></script>
+  <script src="js/mavs.js"></script>
+</body>
+</html>
