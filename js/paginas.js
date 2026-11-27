@@ -8,17 +8,14 @@
   var M = window.MAVS, T = window.MAVS_TECNICAS, I = window.MAVS_ICONOS;
   var pagina = document.body.getAttribute("data-pagina");
 
-  /* Significado de las piedras (sección "Las piedras" del inicio, RF14) */
-  var PIEDRAS = [
-    ["amatista", "Amatista", "Calma", "Asociada a la serenidad y al descanso de la mente."],
-    ["lapisl", "Lapislázuli", "Verdad", "Ligada a la comunicación sincera y la intuición."],
-    ["ojo de tigre", "Ojo de tigre", "Protección", "Usada como amuleto de confianza y resguardo."],
-    ["cuarzo rosa", "Cuarzo rosa", "Amor", "La piedra del amor propio y la ternura."],
-    ["obsidiana", "Obsidiana", "Limpieza", "Tradicionalmente se usa para alejar energías pesadas."]
-  ];
+  /* Significado de las piedras (textos de la clienta, js/piedras.js) */
+  var WSP = "56989234239";
   function significados(texto) {
     var t = String(texto).toLowerCase();
-    return PIEDRAS.filter(function (p) { return t.indexOf(p[0]) > -1; });
+    return (window.MAVS_PIEDRAS || []).filter(function (p) {
+      var base = p.nombre.toLowerCase().replace(" verde", "");
+      return t.indexOf(base) > -1;
+    });
   }
 
   /* ---------------- Ficha de producto ---------------- */
@@ -63,8 +60,8 @@
             '<dt>Disponibilidad</dt><dd>' + (p.unica ? "Pieza única, 1 disponible" : "Disponible") + '</dd>' +
           '</dl>' +
           (sig.length ? '<div class="significados">' + sig.map(function (s) {
-            return '<div><span class="gema-mini ' + s[0].replace(/[^a-z]/g, "") + '" aria-hidden="true"></span><div><h3>' + s[1] + ' · ' + s[2] + '</h3><p>' + s[3] + '</p></div></div>';
-          }).join("") + '</div>' : '') +
+            return '<div>' + window.MAVS_GEMA(s.nombre, "mini") + '<div><h3>' + s.nombre + '</h3><p>' + s.significado + '</p></div></div>';
+          }).join("") + '<a class="enlace-politicas" href="piedras.html#significados">Significado de todas las piedras</a></div>' : '') +
           '<ul class="garantias">' +
             '<li><strong>Garantía legal de 6 meses</strong> por fallas de fabricación.</li>' +
             '<li><strong>Retracto de 10 días</strong> desde que la recibes.</li>' +
@@ -85,6 +82,24 @@
     var otras = window.MAVS_PRODUCTOS.filter(function (x) { return x.id !== p.id && x.tecnica === p.tecnica && x.estado !== "vendida"; }).slice(0, 4);
     document.getElementById("relacionadas").innerHTML = otras.map(window.MAVS_TARJETA).join("");
     window.MAVS_PINTAR_PAGINA = function () {};
+  }
+
+  /* ---------------- Piedras ---------------- */
+  if (pagina === "piedras") {
+    var G = window.MAVS_GEMA;
+    function wsp(t) { return "https://wa.me/" + WSP + "?text=" + encodeURIComponent(t); }
+    document.getElementById("lista-guia").innerHTML = window.MAVS_GUIA.map(function (g) {
+      return '<article class="situacion"><h3>' + g[0] + '</h3>' +
+        '<ul class="trio">' + g[1].map(function (n) { return '<li>' + G(n) + '<span>' + n + '</span></li>'; }).join("") + '</ul>' +
+        '<a class="enlace-flecha" href="' + wsp("Hola María Angélica, " + g[0].charAt(0).toLowerCase() + g[0].slice(1) + " Me gustaría una pieza con " + g[1].slice(0, 2).join(", ") + " y " + g[1][2] + ".") + '" target="_blank" rel="noopener">Quiero una pieza así</a></article>';
+    }).join("");
+    document.getElementById("lista-combinaciones").innerHTML = window.MAVS_COMBINACIONES.map(function (c) {
+      return '<li><div class="gemas">' + c[1].map(function (n) { return G(n); }).join("") + '</div>' +
+        '<h3>' + c[0] + '</h3><p class="piedras-combo">' + c[1].join(" + ") + '</p><p>' + c[2] + '</p></li>';
+    }).join("");
+    document.getElementById("lista-minerales").innerHTML = window.MAVS_PIEDRAS.map(function (p) {
+      return '<article class="mineral" id="' + p.id + '">' + G(p.nombre, "grande") + '<div><h3>' + p.nombre + '</h3><p>' + p.significado + '</p></div></article>';
+    }).join("");
   }
 
   /* ---------------- Carrito (página) ---------------- */
