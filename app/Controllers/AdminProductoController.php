@@ -4,9 +4,6 @@ declare(strict_types=1);
 /** Panel: gestión de productos y stock (CU-09, CU-10, RF-16 a RF-18). */
 final class AdminProductoController
 {
-    private const MAX_FOTO = 8 * 1024 * 1024;
-    private const TIPOS_FOTO = ['image/jpeg', 'image/png', 'image/webp'];
-
     public function index(): void {
         $estado = (string)($_GET['estado'] ?? '');
         $buscar = trim((string)($_GET['q'] ?? ''));
@@ -59,8 +56,7 @@ final class AdminProductoController
         if (!in_array($d['id_tipo'], array_map('intval', array_column(Producto::tipos(), 'id_tipo')), true)) $e['id_tipo'] = 'Elige un tipo.';
         $foto = $_FILES['foto'] ?? null;
         $hayFoto = $foto && $foto['error'] !== UPLOAD_ERR_NO_FILE;
-        if ($hayFoto && ($foto['error'] !== UPLOAD_ERR_OK || $foto['size'] > self::MAX_FOTO
-            || !in_array((new finfo(FILEINFO_MIME_TYPE))->file($foto['tmp_name']), self::TIPOS_FOTO, true))) {
+        if ($hayFoto && !ImagenService::esValida($foto)) {
             $e['foto'] = 'La foto debe ser JPG, PNG o WebP de hasta 8 MB.';
         }
         if (!$d['id_producto'] && !$hayFoto) $e['foto'] = 'Sube al menos una foto.';
@@ -71,21 +67,10 @@ final class AdminProductoController
         }
         $id = Producto::guardar($d, $d['piedras']);
         if ($hayFoto) {
-            Producto::agregarFoto($id, self::procesarFoto($foto['tmp_name'], $id), $d['nombre']);
+            Producto::agregarFoto($id, ImagenService::guardar($foto['tmp_name'], $id), $d['nombre']);
         }
         aviso('Pieza guardada.');
         redirigir('admin/productos');
-    }
-
-    /** Ajusta la foto a 1200 px de ancho y la guarda en WebP (Tabla 4.4). */
-    private static function procesarFoto(string $origen, int $id): string {
-        $img = imagecreatefromstring((string)file_get_contents($origen));
-        if ($img === false) throw new RuntimeException('Imagen no válida');
-        if (imagesx($img) > 1200) $img = imagescale($img, 1200);
-        $nombre = 'uploads/productos/' . $id . '-' . bin2hex(random_bytes(4)) . '.webp';
-        imagewebp($img, __DIR__ . '/../../public/' . $nombre, 82);
-        imagedestroy($img);
-        return $nombre;
     }
 
     /** Publicar, ocultar o marcar vendida (venta en feria). */

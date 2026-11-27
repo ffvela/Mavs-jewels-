@@ -12,8 +12,8 @@ Proyecto semestral de Ingeniería de Software (UTEM): sitio web de comercio elec
 | `app/` | Aplicación PHP 8 con patrón MVC: `Controllers`, `Models`, `Services` y `Views` |
 | `config/` | `bootstrap.php` (sesión segura, CSRF y ayudas de vistas) y la guía de piedras |
 | `public/` | Raíz pública del sitio: `index.php` (controlador frontal), `.htaccess`, CSS, JS, imágenes y videos |
-| `database/` | `schema.sql` (modelo relacional, Tabla 4.3 del informe), `datos.sql` (datos iniciales) y `crear_admin.php` |
-| `cron/` | `liberar_reservas.php`: libera las reservas vencidas cada 5 minutos (RF-23) |
+| `database/` | `schema.sql` (modelo relacional, Tabla 4.3 del informe), `seed.sql` (datos iniciales) y `crear_admin.php` |
+| `cron/` | `liberar_reservas.php` (libera las reservas vencidas cada 5 minutos, RF-23) y `respaldo_bd.php` (respaldo diario de la base de datos; conserva los últimos 7) |
 | `prototipo/` | Prototipo navegable en HTML, CSS y JavaScript de la propuesta de diseño aprobada |
 
 ## Puesta en marcha local (Docker)
@@ -32,9 +32,9 @@ Mercado Pago no puede enviar notificaciones (webhook) a `localhost`: el pago com
 ## Publicación en el hosting (cPanel)
 
 1. Subir el proyecto fuera de `public_html` y apuntar el dominio a la carpeta `public/`.
-2. Crear la base de datos y cargar `database/schema.sql` y `database/datos.sql` desde phpMyAdmin.
+2. Crear la base de datos y cargar `database/schema.sql` y `database/seed.sql` desde phpMyAdmin.
 3. Crear el `.env` con las credenciales reales, ejecutar `composer install --no-dev` y crear la cuenta con `database/crear_admin.php`.
-4. Programar el cron cada 5 minutos: `php /home/USUARIO/mavs/cron/liberar_reservas.php`.
+4. Programar dos tareas en Cron Jobs: `php /home/USUARIO/mavs/cron/liberar_reservas.php` cada 5 minutos y `php /home/USUARIO/mavs/cron/respaldo_bd.php` una vez al día.
 5. En Mercado Pago: configurar el webhook en `https://DOMINIO/pago/webhook` y copiar la clave secreta en `MP_WEBHOOK_SECRET`.
 
 ## Estado
@@ -44,7 +44,7 @@ Mercado Pago no puede enviar notificaciones (webhook) a `localhost`: el pago com
 | Catálogo, ficha, carrito, datos de despacho y páginas de contenido | Hecho |
 | Registro del pedido y reserva de piezas por 15 minutos | Hecho |
 | Pago con Mercado Pago (preferencia, webhook con firma, pago tardío y reembolso) | Hecho; falta probarlo con credenciales de prueba |
-| Liberación de reservas (cron) | Hecho |
+| Liberación de reservas y respaldo diario (cron) | Hecho |
 | Panel: ingreso, productos (con fotos) y pedidos | Hecho |
 | Panel: edición de contenidos (punto de venta, textos, testimonios) | Pendiente; hoy se editan en la base de datos |
 | Pruebas con base de datos y pago real | Pendiente (semana 4) |

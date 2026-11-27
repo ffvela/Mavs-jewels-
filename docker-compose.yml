@@ -18,7 +18,7 @@ services:
       MARIADB_ROOT_PASSWORD: root_local
     volumes:
       - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
-      - ./database/datos.sql:/docker-entrypoint-initdb.d/02-datos.sql:ro
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
       - datos_mysql:/var/lib/mysql
     ports:
       - "3306:3306"

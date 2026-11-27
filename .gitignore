@@ -14,3 +14,6 @@ public/uploads/productos/*
 Thumbs.db
 .vscode/
 .idea/
+
+# Respaldos diarios de la base de datos (cron/respaldo_bd.php)
+respaldos/
