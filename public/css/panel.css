@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Mavs Jewelry — panel de administración (mismo sistema visual del sitio)
+   ========================================================================== */
+.panel-body { background: var(--gris-fondo); }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.panel-cab { background: var(--noche); color: #fff; display: flex; align-items: center; gap: 24px; padding: 10px clamp(16px, 3vw, 32px); flex-wrap: wrap; position: sticky; top: 0; z-index: 20; }
+.panel-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.panel-logo img { height: 40px; width: auto; }
+.panel-logo span { font-family: var(--display); text-transform: uppercase; font-size: 1.3rem; color: var(--rosa); }
+.panel-nav { display: flex; gap: 4px; flex: 1; }
+.panel-nav button { background: transparent; border: 0; color: #e8dcea; font-family: var(--display); text-transform: uppercase; font-size: 1.05rem; padding: 10px 14px; min-height: 44px; border-bottom: 3px solid transparent; }
+.panel-nav button[aria-current="page"] { color: #fff; border-bottom-color: var(--rosa); }
+.panel-sesion { display: flex; gap: 18px; font-size: .82rem; }
+.panel-sesion a { color: #e8dcea; }
+@media (max-width: 720px) { .panel-nav { order: 3; flex-basis: 100%; overflow-x: auto; } .panel-sesion { margin-left: auto; } }
+
+.panel-main { width: min(1240px, 100% - 32px); margin: 0 auto; padding: 28px 0 60px; }
+.indicadores { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
+.indicadores > div { background: #fff; padding: 16px 18px; border-top: 4px solid var(--t-ciruela); }
+.indicadores > div:nth-child(2) { border-top-color: var(--t-rosa-oscuro); }
+.indicadores > div:nth-child(3) { border-top-color: var(--t-oro); }
+.indicadores > div:nth-child(4) { border-top-color: var(--t-noche); }
+.indicadores span { display: block; font-size: .78rem; color: var(--gris); }
+.indicadores strong { font-family: var(--display); font-weight: 400; font-size: 2.6rem; line-height: 1; }
+@media (max-width: 720px) { .indicadores { grid-template-columns: 1fr 1fr; } }
+
+.vista-cab { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.vista-cab h1 { font-size: clamp(2.8rem, 6vw, 4.6rem); margin: 0; }
+.vista-cab h2 { font-size: 2.2rem; margin: 0; }
+.barra-panel { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 18px; }
+.buscar input { font: inherit; border: 1px solid var(--noche); background: #fff; padding: 10px 12px; min-height: 44px; width: min(380px, 100%); border-radius: 0; }
+.panel-main .chip { min-height: 40px; }
+
+.lista-panel { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.fila-producto { display: grid; grid-template-columns: 64px 1fr auto auto; gap: 16px; align-items: center; background: #fff; padding: 10px 14px 10px 10px; }
+.fila-producto .mini { width: 64px; height: 80px; display: grid; place-items: center; padding: 6px; }
+.fila-producto .mini img { width: 100%; height: 100%; object-fit: cover; }
+.fila-producto h3 { font-size: 1.4rem; margin: 2px 0; }
+.codigo { font-size: .74rem; color: var(--gris); letter-spacing: .02em; }
+.panel-main .sub { font-size: .8rem; color: var(--gris); }
+.estado { font-family: var(--display); text-transform: uppercase; font-size: .85rem; padding: 4px 10px 3px; white-space: nowrap; justify-self: start; }
+.e-publicado, .e-pagado { background: #dcefe3; color: #1d5b39; }
+.e-reservado, .e-pendiente { background: var(--t-oro); color: #5a3f12; }
+.e-borrador, .e-expirado { background: var(--t-noche); color: var(--noche); }
+.e-oculto { background: #eee; color: #555; }
+.e-vendido, .e-enviado { background: var(--t-ciruela); color: var(--noche); }
+.e-en_preparacion { background: var(--t-rosa); color: #7a2350; }
+.e-reembolsado, .e-rechazado { background: #fbe6ec; color: #7a1c39; }
+.acc { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.acc button { border: 1px solid var(--noche); background: #fff; color: var(--noche); font-family: var(--display); text-transform: uppercase; font-size: .85rem; padding: 6px 10px 5px; min-height: 40px; border-radius: 0; }
+.acc button.fuerte { background: var(--noche); color: #fff; }
+.acc button[disabled] { opacity: .4; cursor: not-allowed; }
+@media (max-width: 820px) {
+  .fila-producto { grid-template-columns: 56px 1fr; }
+  .fila-producto .estado { grid-column: 2; }
+  .fila-producto .acc { grid-column: 1 / -1; justify-content: flex-start; }
+}
+.panel-main .vacio { background: #fff; }
+
+.form-pieza { background: #fff; margin-top: 24px; }
+.fotos-campo input { border-style: dashed !important; padding: 18px 12px !important; background: var(--gris-fondo) !important; }
+.fotos-campo small { color: var(--gris); font-size: .78rem; }
+.casilla-linea { display: flex; gap: 10px; align-items: center; min-height: 44px; font-size: .88rem; margin-bottom: 8px; }
+.piedras-campo { border: 0; padding: 0; margin: 0 0 16px; display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.piedras-campo legend { font-family: var(--display); text-transform: uppercase; margin-bottom: 6px; }
+.piedras-campo label { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; font-size: .88rem; }
+
+.pedidos-grid { display: grid; grid-template-columns: 1fr 400px; gap: 20px; align-items: start; }
+.fila-pedido { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 2px 14px; text-align: left; background: #fff; border: 2px solid transparent; padding: 12px 14px; font: inherit; color: inherit; }
+.fila-pedido[aria-current="true"] { border-color: var(--noche); }
+.fila-pedido strong { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.3rem; grid-column: 1; }
+.fila-pedido .codigo { grid-column: 1; }
+.fila-pedido .sub { grid-column: 1; }
+.fila-pedido .estado { grid-column: 2; grid-row: 1 / 3; align-self: center; justify-self: end; }
+.fila-pedido .precio { grid-column: 2; font-size: 1.3rem; justify-self: end; }
+.detalle-pedido { background: #fff; position: sticky; top: 90px; display: grid; gap: 12px; }
+.detalle-pedido h2 { font-size: 2.2rem; margin: 0; }
+.detalle-pedido h3 { font-size: 1.3rem; margin: 6px 0 0; }
+.detalle-pedido dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 0; font-size: .84rem; }
+.detalle-pedido dt { font-family: var(--display); text-transform: uppercase; }
+.detalle-pedido dd { margin: 0; }
+.piezas-pedido { margin: 0; padding-left: 18px; font-size: .86rem; }
+.detalle-pedido .aviso { background: var(--gris-fondo); margin: 0; }
+.form-reembolso { display: grid; gap: 8px; padding: 14px; background: var(--rosa-claro); }
+.form-reembolso[hidden] { display: none; }
+.form-reembolso small { font-size: .76rem; color: var(--gris); }
+@media (max-width: 900px) { .pedidos-grid { grid-template-columns: 1fr; } .detalle-pedido { position: static; } }
+
+.contenidos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-contenido { background: #fff; }
+.form-contenido h2 { font-size: 2rem; }
+@media (max-width: 820px) { .contenidos-grid { grid-template-columns: 1fr; } }
+
+/* Ingreso */
+.ingreso-body { background: var(--noche); min-height: 100vh; }
+.ingreso { min-height: 100vh; display: grid; place-content: center; justify-items: center; gap: 22px; padding: 32px 16px; }
+.ingreso-marca { text-align: center; color: #e8dcea; }
+.ingreso-marca img { height: 90px; width: auto; margin: 0 auto 8px; }
+.ingreso-marca p { font-family: var(--display); text-transform: uppercase; color: var(--rosa); margin: 0; max-width: none; }
+.ingreso-form { background: #fff; width: min(400px, 100vw - 32px); padding: 28px; display: grid; gap: 4px; }
+.ingreso-form h1 { font-size: 3rem; margin-bottom: 10px; }
+.ingreso-form small { color: var(--gris); font-size: .76rem; margin-top: 10px; }
+.volver-sitio { color: #e8dcea; font-size: .84rem; }
+
+/* Versión PHP */
+.panel-nav a { color: #e8dcea; font-family: var(--display); text-transform: uppercase; font-size: 1.05rem; padding: 10px 14px; min-height: 44px; border-bottom: 3px solid transparent; text-decoration: none; display: inline-flex; align-items: center; }
+.panel-nav a[aria-current="page"] { color: #fff; border-bottom-color: var(--rosa); }
+.panel-sesion form { display: inline; }
+.enlace-boton { background: none; border: 0; padding: 0; color: #e8dcea; text-decoration: underline; font: inherit; font-size: .82rem; }
+.acc form { display: inline; }
+.acc .accion, .vista-cab .accion { border: 1px solid var(--noche); background: #fff; color: var(--noche); font-family: var(--display); text-transform: uppercase; font-size: .85rem; padding: 9px 10px 8px; text-decoration: none; display: inline-flex; align-items: center; min-height: 40px; }
+.fila-pedido { text-decoration: none; }
+.fotos-actuales { display: flex; gap: 8px; margin-bottom: 12px; }
+.fotos-actuales img { object-fit: cover; }
+details.form-reembolso summary { font-family: var(--display); text-transform: uppercase; cursor: pointer; }
+details.form-reembolso form { display: grid; gap: 8px; margin-top: 10px; }
+.panel-main .aviso { margin: 0 0 16px; }
