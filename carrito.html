@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrito · Mavs Jewelry</title>
+  <meta name="description" content="Resumen de tu compra en Mavs Jewelry.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mavs.css">
+</head>
+<body data-pagina="carrito">
+  <div id="cabecera"></div>
+
+  <main>
+    <section class="banda banda-blanca ficha-banda">
+      <div class="contenedor">
+        <nav class="migas oscuras" aria-label="Ruta"><a href="index.html">Inicio</a> › Carrito</nav>
+        <h1 class="titulo-pagina">Tu carrito</h1>
+        <div class="carrito-pagina">
+          <div id="lista-carrito" class="lista-carrito"></div>
+          <aside class="resumen" id="resumen" aria-label="Resumen de la compra">
+            <h2>Resumen</h2>
+            <dl>
+              <dt id="n-piezas">0 piezas</dt><dd id="subtotal">$0</dd>
+              <dt>Despacho Starken</dt><dd>Por pagar al recibir</dd>
+            </dl>
+            <div class="total"><span>Total a pagar hoy</span><div class="precio" id="total-carrito">$0</div></div>
+            <a class="btn btn-noche" href="despacho.html">Continuar con la compra</a>
+            <small>Pago con tarjeta de crédito o débito en Mercado Pago. Cada pieza única se reserva para ti por 15 minutos al pasar al pago.</small>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="pie"></div>
+  <script src="js/productos.js"></script>
+  <script src="js/mavs.js"></script>
+  <script src="js/paginas.js"></script>
+</body>
+</html>

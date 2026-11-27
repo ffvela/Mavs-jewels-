@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ingresar al panel · Mavs Jewelry</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mavs.css">
+  <link rel="stylesheet" href="css/panel.css">
+</head>
+<body class="panel-body ingreso-body">
+  <main class="ingreso">
+    <div class="ingreso-marca">
+      <img src="img/logo-mavs.png" alt="Mavs Jewelry" width="120" height="89">
+      <p>Panel de administración</p>
+    </div>
+    <form class="ingreso-form" id="form-ingreso" action="panel.html" novalidate>
+      <h1>Ingresar</h1>
+      <input type="hidden" name="csrf" value="token-de-sesion">
+      <div class="campo"><label for="usuario">Usuario</label><input id="usuario" name="usuario" type="text" autocomplete="username" required></div>
+      <div class="campo"><label for="clave">Contraseña</label><input id="clave" name="clave" type="password" autocomplete="current-password" required></div>
+      <p class="aviso error" id="error-ingreso" role="alert" hidden>Usuario o contraseña incorrectos.</p>
+      <button class="btn btn-noche btn-ancho" type="submit">Ingresar</button>
+      <small>Por seguridad, después de 5 intentos fallidos el ingreso se bloquea por 15 minutos.</small>
+    </form>
+    <a class="volver-sitio" href="index.html">Volver al sitio</a>
+  </main>
+  <script>
+    document.getElementById("form-ingreso").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var ok = this.usuario.value.trim() && this.clave.value;
+      document.getElementById("error-ingreso").hidden = !!ok;
+      if (ok) location.href = "panel.html"; /* Prototipo: en PHP se valida con password_verify */
+    });
+  </script>
+</body>
+</html>
