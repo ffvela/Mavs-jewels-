@@ -701,3 +701,7 @@ input[type="radio"], input[type="checkbox"] { width: 20px; height: 20px; accent-
 .mineral h3 { font-size: 1.8rem; margin: 0 0 2px; }
 .mineral p { font-size: .88rem; color: var(--gris); margin: 0; }
 .significados > div { grid-template-columns: 44px 1fr; }
+
+/* Corrección responsiva: evita que los formularios y sus tarjetas desborden en pantallas angostas */
+.campo input, .campo textarea, .campo select { width: 100%; min-width: 0; box-sizing: border-box; }
+@media (max-width: 900px) { .contacto-grid, .carrito-pagina, .despacho-grid { grid-template-columns: minmax(0, 1fr); } }
